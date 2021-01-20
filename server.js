@@ -6,6 +6,7 @@ const connectDB = require("./config/db");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const colors = require("colors");
+const errorHandler = require("./middleware/customizederror");
 
 dotenv.config({
     path: "./config/config.env",
@@ -13,6 +14,10 @@ dotenv.config({
 
 // Connect to mongoDB database
 connectDB();
+
+// Load routes files
+const auth = require("./routes/auth");
+const { urlencoded } = require("express");
 
 // initialize out app variable with express
 const app = express();
@@ -32,6 +37,12 @@ app.use(fileupload());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, "public")));
+
+// Mount routes
+app.use("/api/v1/auth", auth);
+
+// To use the custom error message
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
