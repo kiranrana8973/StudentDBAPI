@@ -1,5 +1,5 @@
 const ErrorResponse = require("../utils/errorResponse");
-const student = require("../model/Student");
+const Student = require("../model/Student");
 const asyncHandler = require("../middleware/async");
 //To get the file name extension line .jpg,.png
 const path = require("path");
@@ -8,7 +8,6 @@ const path = require("path");
 //--------------------CREATE Student------------------
 
 exports.createStudent = asyncHandler(async (req, res, next) => {
-  req.body.user = req.user.id;
 
   const student = await Student.create(req.body);
 
@@ -58,7 +57,7 @@ exports.deleteStudent = asyncHandler(async (req, res, next) => {
       return next(new ErrorResponse(`No student found `), 404);
     }
   
-    await Student.remove();
+    await student.remove();
   
     res.status(200).json({
       success: true,

@@ -3,7 +3,7 @@ const  router = express.Router();
 
 const {
   createStudent,
-  getStudents,
+  getStudents, 
   getStudentById,
   deleteStudent,
   StudentPhotoUpload,
@@ -13,8 +13,8 @@ const {
 
   router
   .route("/")
-  .get(getStudents)
-  .post(protect, createStudent);
+  .get(protect,getStudents)
+  .post(protect,createStudent);
 
   router
   .route("/:id/photo")
@@ -22,7 +22,7 @@ const {
 
   router
   .route("/:id")
-  .get(getStudentById)
+  .get(protect,getStudentById)
   .delete(protect, deleteStudent);
 
 

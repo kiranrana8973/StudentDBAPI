@@ -4,7 +4,8 @@
   "description": "Sample student data API",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "set NODE_ENV=development & nodemon server.js",
+    "dev": "nodemon server.js"
   },
   "author": "Kiran Rana",
   "license": "ISC",

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const slugify = require("slugify");
 
 const Student = new mongoose.Schema(
     {
@@ -33,4 +32,4 @@ const Student = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model("student",Student);
+module.exports = mongoose.model("Student",Student);
