@@ -30,14 +30,24 @@ exports.login = asyncHandler(async (req, res, next) => {
   const user = await User.findOne({ username: username }).select("+password");
   //because in password field we have set the property select:false , but here we need as password so we added + sign
 
-
   if (!user) {
     res
     .status(201)
     .json({
       success: false,
-      message: 'Invalid credentails',
+      message: 'Invalid credentails user',
     });  
+  }
+
+  // const isMatch = await user.matchPassword(password); // decrypt password
+  
+  if (user.password!= password) {
+    res
+    .status(201)
+    .json({
+      success: false,
+      message: 'Invalid credentails',
+    });
   }
  else{
   sendTokenResponse(user, 200, res);
