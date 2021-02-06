@@ -1,5 +1,5 @@
 const ErrorResponse = require("../utils/errorResponse");
-const Student = require("../model/Student");
+const Student = require("../model/student");
 const asyncHandler = require("../middleware/async");
 //To get the file name extension line .jpg,.png
 const path = require("path");
