@@ -9,7 +9,15 @@ const path = require("path");
 
 exports.createStudent = asyncHandler(async (req, res, next) => {
 
-  const student = await Student.create(req.body);
+  const studentnew = {
+    fullname : req.body.fullname,
+    age : req.body.age,
+    gender : req.body.gender,
+    address : req.body.address,
+    photo : req.body.photo,
+  }
+  //const student = await Student.create(req.body);
+  const student = await Student.create(studentnew);
 
   if (!student) {
     return next(new ErrorResponse("Error adding student"), 404);
