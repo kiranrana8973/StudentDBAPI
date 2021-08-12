@@ -34,7 +34,7 @@ exports.createStudent = asyncHandler(async (req, res, next) => {
 exports.getStudents = asyncHandler(async (req, res, next) => {
     const students = await Student.find({});
   
-    res.status(201).json({
+    res.status(200).json({
       success: true,
       count: students.length,
       data: students,

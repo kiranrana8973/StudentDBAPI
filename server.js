@@ -19,6 +19,7 @@ connectDB();
 const auth = require("./routes/auth");
 const student = require("./routes/student");
 const { urlencoded } = require("express");
+const { get } = require("./routes/auth");
 
 // initialize out app variable with express
 const app = express();
@@ -27,6 +28,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({urlencoded:true}))
 app.use(cookieParser());
+
 
 // i want this only to run during development process not in production mode
 if (process.env.NODE_ENV.trim() === "development") {
@@ -47,6 +49,7 @@ app.use("/api/v1/student", student);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
+
 
 // In order to run the server we need to call listen
 const server = app.listen(
